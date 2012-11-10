@@ -1,0 +1,117 @@
+.\" iwas4gdou 0.1 Copyright (C) 2010 Imma.
+.\" Man page for iwas4gdou
+
+.TH iwas4gdou 1 "2010-9-10" "" "iwas4gdou"                         
+
+
+.SH NAME                                      
+iwas4gdou \- IEEE802.1x Wired Authentication Supplicant for GDOU.
+
+
+.SH SYNOPSIS
+.B iwas4gdou -a 
+[
+.BR r " ["
+.B cf
+.R ]] <
+.B -i
+.I ifname 
+.R > <
+.B -u
+.I usr
+.R > [
+.B -p
+.IR psw " ]"
+
+.B iwas4gdou -d 
+<
+.B -i
+.IR ifname >
+
+
+.SH DESCRIPTION
+This manual page documents the GNU version of \fBiwas4gdou\fR, an IEEE802.1x Wired Authentication Supplicant for 
+GDOU (Guangdong Ocean University). The first argument to \fBiwas4gdou\fR must be the one of function letters: \fBa\fR or \fBd\fR, followed by any options.
+
+
+.SH EXAMPLES
+.B iwas4gdou -ar -i 
+.I eth0 
+.B -u 
+.I myusr 
+.B -p 
+.I mypsw
+
+.B iwas4gdou -ar -i 
+.I eth0 
+.B -u 
+.I myusr
+
+.B iwas4gdou -d -i 
+.I eth0
+
+
+.SH FUNCTION LETTERS
+One of the following options must be used:
+.TP 
+.B -a
+perform authentication
+.TP 
+.B -d
+perform de-authentication
+
+
+.SH OTHER OPTIONS
+.TP 
+.B "-i ifname"
+specified interface name
+.TP 
+.B "-u usr"
+specified user name
+.TP 
+.B "-p psw"
+specified password (no recommend 'cause it may tells your secret to others)
+.TP 
+.B -r
+run re-authentication when authentication succeeds
+.TP 
+.B -f
+run re-authentication in foreground (requires -r)
+.TP 
+.B -c
+run re-authentication whit compatible mode (requires -r). With compatible mode, application could be compatible to other different IEEE802.1x authentication(EAP over Ethernet II) system. Don't use it if application works good.
+
+
+.SH NOTE
+At this moment, compatibility of DHCP server in GDOU (Guangdong Ocean University) is not so good. It may couldn't lease any IP address by using \fBdhclient\fR, if this happen, please edit the configuration file \fBdhclient.conf\fR (Default is \fI/etc/dhcp/dhclient.conf\fR, create it if not existing) like this:
+.PP
+.nf
+    # eth0 is your interface name
+    interface "eth0" {      
+        # the value is `1:` concats with interface hardware address 
+        send dhcp-client-identifier 1:00:e0:4c:4d:2f:34;
+    }
+.fi
+
+
+.SH SEE ALSO
+dhclient(8), dhclient.conf(5).
+
+
+.SH COPYRIGHT
+.BR iwas4gdou 
+is Copyright (C) 2010 Imma.
+.PP
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+.PP
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+.PP
+You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+
+.SH BUGS
+There are probably some bugs I don't known what they are yet, any bugs could be reported to <474445006@QQ.com>, thanks.
+
+
+.SH AUTHOR
+Imma.
