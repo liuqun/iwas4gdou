@@ -28,5 +28,5 @@ iwas4gdou_SOURCES = \
   $(NULL)
 LDADD = $(PCAP_LIBS)
 dist_noinst_man_MANS = iwas4gdou.1
-EXTRA_DIST = COPYING README
+EXTRA_DIST = COPYING README autogen.sh
 
