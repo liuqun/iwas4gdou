@@ -27,5 +27,6 @@ iwas4gdou_SOURCES = \
   rc4.c rc4.h \
   $(NULL)
 LDADD = $(PCAP_LIBS)
-dist_doc_DATA = COPYING
+dist_noinst_man_MANS = iwas4gdou.1
+EXTRA_DIST = COPYING README
 
