@@ -15,7 +15,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-bin_PROGRAMS = helloworld
-helloworld_SOURCES = helloworld.c helloworld.h config.c config.h
+noinst_PROGRAMS = version
+version_SOURCES = version.c version.h config.h
+sbin_PROGRAMS = iwas4gdou
+iwas4gdou_SOURCES = \
+  main.c global.h \
+  iwas4g.c iwas4g.h \
+  pidfile.c pidfile.h \
+  md5.c md5.h \
+  hmac_md5.c hmac_md5.h \
+  rc4.c rc4.h \
+  $(NULL)
+LDADD = $(PCAP_LIBS)
 dist_doc_DATA = COPYING
 
