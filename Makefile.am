@@ -16,7 +16,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 noinst_PROGRAMS = version
-version_SOURCES = version.c version.h config.h
+version_SOURCES = version.c version.h
 sbin_PROGRAMS = iwas4gdou
 iwas4gdou_SOURCES = \
   main.c global.h \
